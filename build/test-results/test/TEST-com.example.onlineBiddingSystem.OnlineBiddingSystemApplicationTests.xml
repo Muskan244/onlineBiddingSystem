@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.onlineBiddingSystem.OnlineBiddingSystemApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-04-06T11:08:24" hostname="Muskans-MacBook-Air.local" time="0.335">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.example.onlineBiddingSystem.OnlineBiddingSystemApplicationTests" time="0.335"/>
+  <system-out><![CDATA[16:38:21.604 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.onlineBiddingSystem.OnlineBiddingSystemApplicationTests]: OnlineBiddingSystemApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:38:21.661 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.onlineBiddingSystem.OnlineBiddingSystemApplication for test class com.example.onlineBiddingSystem.OnlineBiddingSystemApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.2)
+
+2025-04-06T16:38:21.862+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] .e.o.OnlineBiddingSystemApplicationTests : Starting OnlineBiddingSystemApplicationTests using Java 21.0.4 with PID 18257 (started by muskanraghav in /Users/muskanraghav/Downloads/onlineBiddingSystem)
+2025-04-06T16:38:21.863+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] .e.o.OnlineBiddingSystemApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2025-04-06T16:38:22.195+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-06T16:38:22.229+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 4 JPA repository interfaces.
+2025-04-06T16:38:22.487+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-06T16:38:22.514+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.5.Final
+2025-04-06T16:38:22.531+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-06T16:38:22.671+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-06T16:38:22.685+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-06T16:38:22.970+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@50fd739d
+2025-04-06T16:38:22.972+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-06T16:38:23.009+05:30  WARN 18257 --- [onlineBiddingSystem] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-04-06T16:38:23.010+05:30  WARN 18257 --- [onlineBiddingSystem] [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-04-06T16:38:23.019+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-06T16:38:23.539+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-06T16:38:23.611+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-06T16:38:23.822+05:30  WARN 18257 --- [onlineBiddingSystem] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-06T16:38:23.838+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name daoAuthenticationProvider
+2025-04-06T16:38:23.838+05:30  WARN 18257 --- [onlineBiddingSystem] [    Test worker] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-04-06T16:38:24.162+05:30  INFO 18257 --- [onlineBiddingSystem] [    Test worker] .e.o.OnlineBiddingSystemApplicationTests : Started OnlineBiddingSystemApplicationTests in 2.428 seconds (process running for 3.081)
+]]></system-out>
+  <system-err><![CDATA[Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (/Users/muskanraghav/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.15.11/a38b16385e867f59a641330f0362ebe742788ed8/byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
