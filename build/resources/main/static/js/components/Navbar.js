@@ -70,6 +70,14 @@ const Navbar = () => {
                         <li className="nav-item">
                             <a className="nav-link" href="#/items">Browse Items</a>
                         </li>
+                        {user && (
+                            <li className="nav-item">
+                                <a className="nav-link" href="#/sell">
+                                    <i className="fas fa-tag me-1"></i>
+                                    Sell an Item
+                                </a>
+                            </li>
+                        )}
                     </ul>
                     
                     <ul className="navbar-nav">
@@ -91,6 +99,12 @@ const Navbar = () => {
                                             <a className="dropdown-item" href="#/my-bids">
                                                 <i className="fas fa-gavel me-2"></i>
                                                 My Bids
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="dropdown-item" href="#/my-items">
+                                                <i className="fas fa-box me-2"></i>
+                                                My Items
                                             </a>
                                         </li>
                                         <li><hr className="dropdown-divider" /></li>

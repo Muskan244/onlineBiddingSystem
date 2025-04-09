@@ -2,9 +2,9 @@
  * ItemCard component for displaying an item in a grid
  */
 const ItemCard = ({ item }) => {
-    // Format the current price with 2 decimal places
+    // Format the current price with 2 decimal places using rupee symbol
     const formatPrice = (price) => {
-        return price ? `$${parseFloat(price).toFixed(2)}` : 'No bids yet';
+        return price ? `₹${parseFloat(price).toFixed(2)}` : 'No bids yet';
     };
     
     // Calculate time left for bidding
@@ -30,8 +30,22 @@ const ItemCard = ({ item }) => {
         }
     };
     
-    // Default image if none provided
-    const imageUrl = item.imageUrl || 'https://via.placeholder.com/300x200?text=No+Image';
+    // Process the image URL
+    const getImageUrl = () => {
+        if (!item.imageUrl) {
+            return '/images/no-image.svg'; // Local fallback image
+        }
+        
+        // Check if the image URL is a full URL or a relative path
+        if (item.imageUrl.startsWith('http://') || item.imageUrl.startsWith('https://')) {
+            return item.imageUrl;
+        } else {
+            // Assume it's a relative path to the images directory
+            return `/images/${item.imageUrl}`;
+        }
+    };
+    
+    const imageUrl = getImageUrl();
     
     return (
         <div className="col-md-4 mb-4">
