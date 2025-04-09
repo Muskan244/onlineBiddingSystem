@@ -13,8 +13,15 @@ const Home = () => {
                 setLoading(true);
                 const items = await API.items.getAll();
                 
+                // Filter out items whose bidding has ended
+                const now = new Date();
+                const activeItems = items.filter(item => {
+                    const endTime = new Date(item.biddingEndTime);
+                    return endTime > now;
+                });
+                
                 // Sort by most recent and take the first 6
-                const sorted = items.sort((a, b) => {
+                const sorted = activeItems.sort((a, b) => {
                     return new Date(b.biddingEndTime) - new Date(a.biddingEndTime);
                 });
                 
@@ -52,7 +59,7 @@ const Home = () => {
                         </div>
                         <div className="col-lg-6 d-none d-lg-block">
                             <img 
-                                src="https://images.unsplash.com/photo-1602664476270-04c4b0f89b7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                                src="https://static.startuptalky.com/2022/05/online-auction-websites-StartupTalky--1-.jpg" 
                                 alt="Auction" 
                                 className="img-fluid rounded"
                                 style={{ maxHeight: '400px', objectFit: 'cover', width: '100%' }}

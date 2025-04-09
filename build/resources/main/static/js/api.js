@@ -105,6 +105,9 @@ const API = {
                     throw new Error('You must be logged in to create an item');
                 }
                 
+                // Add the current user as the seller
+                itemData.seller = { id: user.id };
+                
                 const response = await fetch(`${API.baseUrl}/item`, {
                     method: 'POST',
                     headers: {
@@ -121,6 +124,67 @@ const API = {
                 return await response.json();
             } catch (error) {
                 console.error('Create item error:', error);
+                throw error;
+            }
+        },
+        
+        update: async (id, itemData) => {
+            try {
+                const user = API.auth.getCurrentUser();
+                if (!user) {
+                    throw new Error('You must be logged in to update an item');
+                }
+                
+                // Verify the user is the seller of this item
+                if (!itemData.seller || itemData.seller.id !== user.id) {
+                    throw new Error('You can only update your own items');
+                }
+                
+                const response = await fetch(`${API.baseUrl}/item/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(itemData),
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Failed to update item');
+                }
+                
+                return await response.json();
+            } catch (error) {
+                console.error(`Update item ${id} error:`, error);
+                throw error;
+            }
+        },
+        
+        delete: async (id) => {
+            try {
+                const user = API.auth.getCurrentUser();
+                if (!user) {
+                    throw new Error('You must be logged in to delete an item');
+                }
+                
+                // Get the item first to verify ownership
+                const item = await API.items.getById(id);
+                if (!item.seller || item.seller.id !== user.id) {
+                    throw new Error('You can only delete your own items');
+                }
+                
+                const response = await fetch(`${API.baseUrl}/item/${id}`, {
+                    method: 'DELETE',
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Failed to delete item');
+                }
+                
+                return true;
+            } catch (error) {
+                console.error(`Delete item ${id} error:`, error);
                 throw error;
             }
         }

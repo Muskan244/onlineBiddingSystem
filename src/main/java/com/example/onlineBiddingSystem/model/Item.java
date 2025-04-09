@@ -24,6 +24,7 @@ public class Item {
     private Double startingPrice;
     private Double currentPrice;
     private LocalDateTime biddingEndTime;
+    private String imageUrl;
 
     @ManyToOne
     @JoinColumn(name = "seller_id")

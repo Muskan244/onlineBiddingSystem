@@ -18,6 +18,12 @@ const App = () => {
             return <Register />;
         } else if (hash === '#/profile') {
             return <Profile />;
+        } else if (hash === '#/items') {
+            return <Search />;
+        } else if (hash === '#/sell') {
+            return <Sell />;
+        } else if (hash === '#/my-items') {
+            return <MyItems />;
         } else {
             return <Home />;
         }
