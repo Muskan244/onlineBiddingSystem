@@ -149,7 +149,7 @@ const ItemDetail = () => {
                         
                         <div className="d-flex justify-content-between align-items-center mb-3">
                             <div className="item-price">
-                                Current Bid: ${parseFloat(item.currentPrice || item.startingPrice).toFixed(2)}
+                                Current Bid: ₹{parseFloat(item.currentPrice || item.startingPrice).toFixed(2)}
                             </div>
                             <div className="item-time-left">
                                 <i className="far fa-clock me-1"></i>
@@ -171,11 +171,11 @@ const ItemDetail = () => {
                             <ul className="list-group">
                                 <li className="list-group-item d-flex justify-content-between align-items-center">
                                     <span>Starting Price:</span>
-                                    <span>${parseFloat(item.startingPrice).toFixed(2)}</span>
+                                    <span>₹{parseFloat(item.startingPrice).toFixed(2)}</span>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between align-items-center">
                                     <span>Current Price:</span>
-                                    <span>${parseFloat(item.currentPrice || item.startingPrice).toFixed(2)}</span>
+                                    <span>₹{parseFloat(item.currentPrice || item.startingPrice).toFixed(2)}</span>
                                 </li>
                                 <li className="list-group-item d-flex justify-content-between align-items-center">
                                     <span>Bidding Ends:</span>
@@ -215,7 +215,7 @@ const ItemDetail = () => {
                                         {bids.map(bid => (
                                             <tr key={bid.id}>
                                                 <td>{bid.bidder ? bid.bidder.name : 'Unknown'}</td>
-                                                <td>${parseFloat(bid.amount).toFixed(2)}</td>
+                                                <td>₹{parseFloat(bid.amount).toFixed(2)}</td>
                                                 <td>{formatDate(bid.bidTime)}</td>
                                             </tr>
                                         ))}
