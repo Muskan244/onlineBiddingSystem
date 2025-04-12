@@ -83,6 +83,8 @@ const Navbar = () => {
                     <ul className="navbar-nav">
                         {user ? (
                             <>
+                                <Notification />
+                            
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i className="fas fa-user-circle me-1"></i>

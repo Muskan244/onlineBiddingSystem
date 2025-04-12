@@ -18,6 +18,19 @@ const MyItems = () => {
 
     React.useEffect(() => {
         fetchUserItems();
+        
+        // Listen for authentication changes
+        const handleAuthChange = () => {
+            fetchUserItems();
+        };
+        
+        // Add event listener for auth changes
+        window.addEventListener('authChange', handleAuthChange);
+        
+        // Cleanup event listener on component unmount
+        return () => {
+            window.removeEventListener('authChange', handleAuthChange);
+        };
     }, []);
 
     // Fetch items created by the current user

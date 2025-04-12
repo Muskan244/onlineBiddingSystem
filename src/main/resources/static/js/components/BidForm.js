@@ -56,7 +56,7 @@ const BidForm = ({ item, onBidPlaced }) => {
         // Validate bid amount
         const bidAmount = parseFloat(amount);
         if (isNaN(bidAmount) || bidAmount < minBidAmount) {
-            setError(`Bid amount must be at least $${minBidAmount.toFixed(2)}`);
+            setError(`Bid amount must be at least ₹{minBidAmount.toFixed(2)}`);
             return;
         }
         
@@ -74,6 +74,42 @@ const BidForm = ({ item, onBidPlaced }) => {
             
             setSuccess('Your bid has been placed successfully!');
             setAmount('');
+            
+            // Send notification to the seller
+            if (item.seller && item.seller.id) {
+                console.log('Sending notification to seller:', item.seller.id);
+                
+                // Create notification data
+                const notificationData = {
+                    userId: item.seller.id,
+                    message: `${user.name || 'Someone'} placed a bid of ₹${bidAmount.toFixed(2)} on your item "${item.name}"`,
+                    link: `#/item/${item.id}`
+                };
+                
+                // Store notification directly in localStorage for the seller
+                const storageKey = `notifications_${item.seller.id}`;
+                const existingNotifications = localStorage.getItem(storageKey);
+                const notifications = existingNotifications ? JSON.parse(existingNotifications) : [];
+                
+                // Add new notification
+                const newNotification = {
+                    id: Date.now(),
+                    message: notificationData.message,
+                    timestamp: new Date().toISOString(),
+                    read: false,
+                    link: notificationData.link
+                };
+                
+                notifications.unshift(newNotification);
+                localStorage.setItem(storageKey, JSON.stringify(notifications));
+                
+                // Also dispatch event for real-time notification if seller is currently logged in
+                const notificationEvent = new CustomEvent('newNotification', {
+                    detail: notificationData
+                });
+                window.dispatchEvent(notificationEvent);
+                console.log('Notification event dispatched');
+            }
             
             // Call the callback function to update the parent component
             if (onBidPlaced) {
@@ -131,10 +167,10 @@ const BidForm = ({ item, onBidPlaced }) => {
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="bidAmount" className="form-label">
-                        Your Bid Amount (minimum: ${minBidAmount.toFixed(2)})
+                        Your Bid Amount (minimum: ₹{minBidAmount.toFixed(2)})
                     </label>
                     <div className="input-group">
-                        <span className="input-group-text">$</span>
+                        <span className="input-group-text">₹</span>
                         <input
                             type="number"
                             className="form-control"

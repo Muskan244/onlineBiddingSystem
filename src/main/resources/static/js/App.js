@@ -24,6 +24,8 @@ const App = () => {
             return <Sell />;
         } else if (hash === '#/my-items') {
             return <MyItems />;
+        } else if (hash === '#/my-bids') {
+            return <MyBids />;
         } else {
             return <Home />;
         }
